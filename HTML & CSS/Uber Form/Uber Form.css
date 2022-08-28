@@ -1,0 +1,55 @@
+.input1, .input2, .b1, .b2 {
+    margin-top:0px;
+    margin-bottom:0px;
+    border:none;
+    font-family: arial;
+}
+p {
+    font-size:24px;
+    font-family:Arial;
+    font-weight:bold;
+    margin-top:0px;
+    font-family:arial;
+}
+.input1 {
+    display:block;
+    background-color: rgb(240, 240, 240);
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:80px;
+    font-size: 14px;
+    margin-bottom:8px;
+}
+.input2 {
+    display:block;
+    background-color: rgb(240, 240, 240);
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:80px;
+    font-size:14px;
+    margin-bottom:28px;
+}
+.b1 {
+    background-color: black;
+    color: white;
+    border:none;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    font-size:14px;
+    cursor:pointer;
+}
+.b2 {
+    background-color: rgb(240, 240, 240);
+    color: black;
+    border:none;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    font-size:14px;
+    cursor:pointer;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>F-list</title>
+        <style>
+            .img1 {
+                width:200px;
+                height:300px;
+            }
+
+            .img2 {
+                width:200px;
+                height:300px;
+            }
+
+            .img3 {
+                width:200px;
+                height:300px;
+            }
+
+            .stylename1, .stylename2, .stylename3 {
+                font-family:Arial;
+                font-weight:bold;
+                margin-top:5px;
+                margin-bottom:2px;
+                font-size:22px;
+            }
+
+            .pp {
+                margin-top:0px;
+                width:40px;
+                border-radius:50px;
+            }
+
+            .add {
+                background-color: rgba(0, 119, 255, 0.904);
+                color: white;
+                border:none;
+                border-radius:3px;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-left:12px;
+                padding-right:12px;
+                cursor:pointer;
+                display:block;
+            }
+
+            .pp, .mutual1, .mutual2, .mutual3 {
+                display: inline-block;
+            }
+
+            .mutual1, .mutual2, .mutual3 {
+                font-family:Arial;
+                font-size:16px;
+                color:grey;
+                margin-top:0px;
+                margin-bottom:0px;
+                vertical-align:top;
+            }
+
+            .inline-column1, .inline-column2, .inline-column3 {
+                display: inline-block;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class = "inline-column1">
+            <div>
+                <img class = "img1" src = "/src/cat1.jpeg">
+            </div>
+            <div>
+                <div>
+                    <p class = "stylename1">Oliver</p>
+                    <img class = "pp" src = "/src/funny.jpg">
+                    <p class = "mutual1">2 mutual friends</p>
+                    <button class = "add">Add Friend</button>
+                </div>
+            </div>
+        </div>
+
+        <div class = "inline-column2">
+            <div>
+                <img class = "img2" src = "/src/sel.jpg">
+            </div>
+            <div>
+                <div>
+                    <p class = "stylename2">Rose</p>
+                    <img class = "pp" src = "/src/funny.jpg">
+                    <p class = "mutual2">9 mutual friends</p>
+                    <button class = "add">Add Friend</button>
+                </div>
+            </div>
+        </div>
+
+        <div class = "inline-column3">
+            <div>
+                <img class = "img3" src = "/src/specs.jpg">
+            </div>
+            <div>
+                <div>
+                    <p class = "stylename3">Michael</p>
+                    <img class = "pp" src = "/src/funny.jpg">
+                    <p class = "mutual3">No mutual friends</p>
+                    <button class = "add">Add Friend</button>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

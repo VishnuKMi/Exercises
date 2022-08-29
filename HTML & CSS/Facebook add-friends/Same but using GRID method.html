@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .img1 {
+                width:200px;
+                height:300px;
+            }
+
+            .img2 {
+                width:200px;
+                height:300px;
+            }
+
+            .img3 {
+                width:200px;
+                height:300px;
+            }
+
+            .gridmaker {
+                display:grid;
+                grid-template-columns:1fr 1fr 1fr;
+                column-gap:5px;
+                row-gap:5px;
+            }
+
+            .stylename1, .stylename2, .stylename3 {
+                font-family:Arial;
+                font-weight:bold;
+                margin-top:5px;
+                margin-bottom:2px;
+                font-size:22px;
+            }
+
+            .pp {
+                margin-top:0px;
+                width:40px;
+                border-radius:50px;
+            }
+
+            .mutual1, .mutual2, .mutual3 {
+                font-family:Arial;
+                font-size:16px;
+                color:grey;
+                margin-top:8px;
+                margin-bottom:0px;
+                vertical-align:top;
+            }
+
+            .add {
+                background-color: rgba(0, 119, 255, 0.904);
+                color: white;
+                border:none;
+                border-radius:3px;
+                padding-top:8px;
+                padding-bottom:8px;
+                padding-left:12px;
+                padding-right:12px;
+                cursor:pointer;
+                display:block;
+            }
+
+            .gridmaker2 {
+                display:grid;
+                grid-template-columns:50px 2fr;
+                column-gap:5px;
+                row-gap:5px;
+                margin-bottom:10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class = "gridmaker">
+            <div class = "prop1">
+                <img class = "img1" src = "/src/cat1.jpeg">
+            </div>
+            <div class = "prop2">
+                <img class = "img2" src = "/src/sel.jpg">
+            </div>
+            <div class = "prop3">
+                <img class = "img3" src = "/src/specs.jpg">
+            </div>
+            <div>
+                <div>
+                    <p class = "stylename1">Oliver</p>
+                    <div class = "gridmaker2">
+                        <img class = "pp" src = "/src/funny.jpg">
+                        <p class = "mutual1">2 mutual friends</p>
+                    </div>
+                    <button class = "add">Add Friend</button>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p class = "stylename2">Rose</p>
+                    <div class = "gridmaker2">
+                        <img class = "pp" src = "/src/funny.jpg">
+                        <p class = "mutual2">9 mutual friends</p>
+                    </div>
+                    <button class = "add">Add Friend</button>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <p class = "stylename3">Michael</p>
+                    <div class = "gridmaker2">
+                        <img class = "pp" src = "/src/funny.jpg">
+                        <p class = "mutual3">No mutual friends</p>
+                    </div>
+                    <button class = "add">Add Friend</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

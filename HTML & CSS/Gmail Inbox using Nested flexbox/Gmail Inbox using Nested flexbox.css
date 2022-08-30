@@ -1,0 +1,48 @@
+.container {
+
+}
+.all-inbox {
+    font-size:14px;
+    font-family:arial;
+    color:grey;
+    margin-bottom:20px;
+}
+.profpic {
+    width:60px;
+    border-radius:30px;
+    margin-right:10px;
+}
+.email {
+    display:flex;
+    flex-direction:row;
+    margin-bottom:25px;
+}
+.email-content {
+    line-height:20px;
+}
+.header {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+.name {
+    font-family:arial;
+    font-weight:bolder;
+    font-size:18px;
+    margin-bottom:2px;
+}
+.time {
+    font-size:14px;
+    color:grey;
+    font-family:arial;
+}
+.overview {
+    font-family:arial;
+    font-size: 14px;
+    font-weight:bold;
+}
+.message {
+    font-family:arial;
+    color:grey;
+    font-size:14px;
+}

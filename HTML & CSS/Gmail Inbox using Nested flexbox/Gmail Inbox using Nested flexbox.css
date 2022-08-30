@@ -1,5 +1,5 @@
 .container {
-
+    width:450px;
 }
 .all-inbox {
     font-size:14px;
@@ -19,6 +19,7 @@
 }
 .email-content {
     line-height:20px;
+    flex:1;
 }
 .header {
     display:flex;

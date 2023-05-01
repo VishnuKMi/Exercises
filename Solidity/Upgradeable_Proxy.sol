@@ -105,6 +105,7 @@ contract Proxy {
     // This shall not happen as we deploy proxies with implementation interfaces. So we create different interfaces for admin and users.
 
     // In cases where we can't turn every fun into private, create modifiers to restrict access.
+    // See "Function Clashing" here : https://forum.openzeppelin.com/t/beware-of-the-proxy-learn-how-to-exploit-function-clashing/1070
     modifier ifAdmin() {
         if (msg.sender == _getAdmin()) { // we use func instead of state variables because they are stored in ADMIN_SLOTs.
             _;

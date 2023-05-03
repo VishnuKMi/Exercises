@@ -1,1 +1,63 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LazyMinting</title>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.6.9/ethers.umd.min.js"
+    ></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const SIGNING_DOMAIN_NAME = 'Voucher-Domain'
+      const SIGNING_DOMAIN_VERSION = '1'
+      const chainId = 1
+      const contractAddress = '0xd9145CCE52D386f254917e481eB44e9943F39138' // Put the address here from remix
+      const signer = new ethers.Wallet(
+        '0x9db1252dba873d88ba2f438f25d51255555bd8597c7f90750a3300a9332c69d3' // private key that I use for address 0x370688C96f1367B601BB4F86C1fc559047f4A6E6
+      )
+
+      //addr: 0x370688C96f1367B601BB4F86C1fc559047f4A6E6
+
+      const domain = {
+        name: SIGNING_DOMAIN_NAME,
+        version: SIGNING_DOMAIN_VERSION,
+        verifyingContract: contractAddress,
+        chainId
+      }
+
+      async function createVoucher(tokenId, price, uri, buyer) {
+        const voucher = { tokenId, price, uri, buyer }
+        const types = {
+          LazyNFTVoucher: [
+            { name: 'tokenId', type: 'uint256' },
+            { name: 'price', type: 'uint256' },
+            { name: 'uri', type: 'string' },
+            { name: 'buyer', type: 'address' }
+          ]
+        }
+
+        const signature = await signer._signTypedData(domain, types, voucher)
+        return {
+          ...voucher,
+          signature
+        }
+      }
+
+      async function main() {
+        const voucher = await createVoucher(
+          5,
+          50,
+          'uri',
+          '0x370688C96f1367B601BB4F86C1fc559047f4A6E6'
+        ) // the address is the address which receives the NFT
+        console.log(
+          `[${voucher.tokenId}, ${voucher.price}, "${voucher.uri}", "${voucher.buyer}", "${voucher.signature}"]`
+        )
+      }
+    </script>
+  </body>
+</html>

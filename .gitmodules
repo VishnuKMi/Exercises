@@ -4,3 +4,6 @@
 [submodule "Foundry/FundMe/lib/chainlink-brownie-contracts"]
 	path = Foundry/FundMe/lib/chainlink-brownie-contracts
 	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
+[submodule "Foundry/FundMe/lib/foundry-devops"]
+	path = Foundry/FundMe/lib/foundry-devops
+	url = https://github.com/Cyfrin/foundry-devops

@@ -6,7 +6,7 @@ import {FundMe} from "../../src/FundMe.sol";
 import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
 
 contract FundMeTest is Test {
-    FundMe fundMe;
+    FundMe public fundMe;
 
     address USER = makeAddr("user");
     uint256 constant SEND_VALUE = 0.1 ether;

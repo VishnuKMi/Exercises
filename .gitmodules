@@ -10,3 +10,6 @@
 [submodule "Foundry/SmartContractLottery/lib/forge-std"]
 	path = Foundry/SmartContractLottery/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "Foundry/SmartContractLottery/lib/chainlink-brownie-contracts"]
+	path = Foundry/SmartContractLottery/lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts

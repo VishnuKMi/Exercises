@@ -6,6 +6,7 @@ import {DeployRaffle} from "../../script/DeployRaffle.sol";
 import {Raffle} from "../../src/Raffle.sol";
 import {HelperConfig} from "../../script/HelperConfig.s.sol";
 import {Vm} from "forge-std/Vm.sol";
+import {VRFCoordinatorV2Mock} from "@chainlink/contracts/src/v0.8/mocks/VRFCoordinatorV2Mock.sol";
 
 contract RaffleTest is Test {
     event EnteredRaffle(address indexed player);
@@ -190,5 +191,61 @@ contract RaffleTest is Test {
 
         assert(uint256(requestId) > 0);
         assert(uint256(rState) == 1); // 1 is 'CALCULATING' state
+    }
+
+    function testFulfillRandomWordsCanOnlyBeCalledAfterPerformUpkeep(
+        uint256 randomRequestId
+    ) public raffleEnteredAndTimePassed {
+        // ARRANGE
+        vm.expectRevert("nonexistent request");
+        VRFCoordinatorV2Mock(vrfCoordinator).fulfillRandomWords(
+            randomRequestId,
+            address(raffle)
+        );
+    }
+
+    function testFulfillRandomWordsPicksWinnerResetsAndSendsMoney()
+        public
+        raffleEnteredAndTimePassed // 1st person already entered Raffle
+    {
+        // ARRANGE
+        uint256 additionalEntrants = 5; // 5 more to enter Raffle
+        uint256 startingIndex = 1; // 0th index is taken by 1st person
+        for (
+            uint256 i = startingIndex;
+            i < startingIndex + additionalEntrants;
+            i++
+        ) {
+            // address player = makeAddr("player");
+            address player = address(uint160(i));
+            hoax(player, STARTING_USER_BALANCE);
+            raffle.enterRaffle{value: entranceFee}();
+        }
+
+        uint256 prize = entranceFee * (additionalEntrants + 1);
+
+        vm.recordLogs();
+        raffle.performUpkeep("");
+        Vm.Log[] memory entries = vm.getRecordedLogs();
+        bytes32 requestId = entries[1].topics[1]; // ReqId is of type bytes32 here becuz of 'Vm.Log'. We can type-cast to uint256 when needed.
+
+        uint256 previousTimestamp = raffle.getLastTimestamp();
+
+        // Pretend to be chainlink vrf to get random no & pick winner.
+        VRFCoordinatorV2Mock(vrfCoordinator).fulfillRandomWords(
+            uint256(requestId),
+            address(raffle)
+        );
+
+        // ASSERT
+        assert(uint256(raffle.getRaffleState()) == 0); // Raffle should be OPEN once winner is selected.
+        assert(raffle.getRecentWinner() != address(0)); // Raffle needs winner stored to state variable 's_recentWinner'.
+        assert(raffle.getLengthOfPlayers() == 0); // Raffle's players array should be reset once winner is selected.
+        assert(previousTimestamp < raffle.getLastTimestamp());
+        // Check for event emitted 'PickedWinner'
+        assert(
+            raffle.getRecentWinner().balance ==
+                STARTING_USER_BALANCE + prize - entranceFee
+        );
     }
 }

@@ -89,19 +89,6 @@ contract FundSubscription is Script {
 }
 
 contract AddConsumer is Script {
-    function addConsumer(
-        address raffle,
-        address vrfCoordinator,
-        uint64 subId,
-        uint256 deployerKey
-    ) public {
-        console.log("Adding consumer contract: ", raffle);
-        console.log("Using vrfCoordinator: ", vrfCoordinator);
-        console.log("On ChainID: ", block.chainid);
-        vm.startBroadcast(deployerKey); // For anvil, no args needed. But for test/main chains, we need private-key.
-        VRFCoordinatorV2Mock(vrfCoordinator).addConsumer(subId, raffle);
-        vm.stopBroadcast();
-    }
 
     function addConsumerUsingConfig(address raffle) public {
         HelperConfig helperConfig = new HelperConfig();
@@ -117,6 +104,20 @@ contract AddConsumer is Script {
         ) = helperConfig.activeNetworkConfig();
 
         addConsumer(raffle, vrfCoordinator, subId, deployerKey);
+    }
+
+    function addConsumer(
+        address raffle,
+        address vrfCoordinator,
+        uint64 subId,
+        uint256 deployerKey
+    ) public {
+        console.log("Adding consumer contract: ", raffle);
+        console.log("Using vrfCoordinator: ", vrfCoordinator);
+        console.log("On ChainID: ", block.chainid);
+        vm.startBroadcast(deployerKey); // For anvil, no args needed. But for test/main chains, we need private-key.
+        VRFCoordinatorV2Mock(vrfCoordinator).addConsumer(subId, raffle);
+        vm.stopBroadcast();
     }
 
     function run() external {

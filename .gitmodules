@@ -19,3 +19,9 @@
 [submodule "Foundry/SmartContractLottery/lib/foundry-devops"]
 	path = Foundry/SmartContractLottery/lib/foundry-devops
 	url = https://github.com/cyfrin/foundry-devops
+[submodule "Foundry/StableCoin/lib/forge-std"]
+	path = Foundry/StableCoin/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "Foundry/StableCoin/lib/openzeppelin-contracts"]
+	path = Foundry/StableCoin/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts

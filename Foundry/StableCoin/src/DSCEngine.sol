@@ -147,7 +147,6 @@ contract DSCEngine is ReentrancyGuard {
     }
 
     /**
-     * @notice  .
      * @param   tokenCollateralAddress  The collateral address to redeem
      * @param   amountCollateral  The amount of collateral to redeem
      * @param   amountDscToBurn  The amount of DSC to burn
@@ -297,5 +296,13 @@ contract DSCEngine is ReentrancyGuard {
         (, int256 price,,,) = priceFeed.latestRoundData();
 
         return ((uint256(price) * ADDITIONAL_FEED_PRECISION) * amount) / PRECISION; // (1000 * 1e18 * (1e10)) * 1000 * 1e18
+    }
+
+    function getAccountInformation(address user)
+        external
+        view
+        returns (uint256 totalDscMinted, uint256 collateralValueInUsd)
+    {
+        (totalDscMinted, collateralValueInUsd) = _getAccountInformation(user);
     }
 }

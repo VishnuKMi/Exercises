@@ -441,19 +441,19 @@ contract DSCEngineTest is StdCheats, Test {
         uint256 usdAmountLiquidated = dsce.getUsdValue(weth, amountLiquidated);
         uint256 expectedUserCollateralValueInUsd = dsce.getUsdValue(weth, AMOUNT_COLLATERAL) - (usdAmountLiquidated);
 
-        ( , uint256 userCollateralValueInUsd) = dsce.getAccountInformation(USER);
+        (, uint256 userCollateralValueInUsd) = dsce.getAccountInformation(USER);
         uint256 hardCodedExpectedValue = 70000000000000000020;
         assertEq(userCollateralValueInUsd, expectedUserCollateralValueInUsd);
         assertEq(userCollateralValueInUsd, hardCodedExpectedValue);
     }
 
     function testLiquidatorTakesOnUserDebt() public liquidated {
-        (uint256 liquidatorDscMinted, ) = dsce.getAccountInformation(LIQUIDATOR);
+        (uint256 liquidatorDscMinted,) = dsce.getAccountInformation(LIQUIDATOR);
         assertEq(liquidatorDscMinted, amountToMint);
     }
 
     function testUserHasNoMoreDebt() public liquidated {
-        (uint256 userDscMinted, ) = dsce.getAccountInformation(USER);
+        (uint256 userDscMinted,) = dsce.getAccountInformation(USER);
         assertEq(userDscMinted, 0);
     }
 
@@ -480,7 +480,7 @@ contract DSCEngineTest is StdCheats, Test {
     }
 
     function testGetAccountCollateralValueFromInformation() public depositedCollateral {
-        ( , uint256 collateralValue) = dsce.getAccountInformation(USER);
+        (, uint256 collateralValue) = dsce.getAccountInformation(USER);
         uint256 expectedCollateralValue = dsce.getUsdValue(weth, AMOUNT_COLLATERAL);
         assertEq(collateralValue, expectedCollateralValue);
     }

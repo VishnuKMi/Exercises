@@ -2,6 +2,7 @@
 pragma solidity ^0.8.20;
 
 import {Test} from "forge-std/Test.sol";
+import {console} from "forge-std/console.sol";
 import {StdInvariant} from "forge-std/StdInvariant.sol";
 import {DeployDSC} from "../../script/DeployDSC.s.sol";
 import {DSCEngine} from "../../src/DSCEngine.sol";
@@ -36,6 +37,17 @@ contract InvariantsTest is StdInvariant, Test {
     uint256 wethValue = dsce.getUsdValue(weth, totalWethDeposited);
     uint256 wbtcValue = dsce.getUsdValue(wbtc, totalWbtcDeposited);
 
+    console.log("weth value: ", wethValue);
+    console.log("wbtc value: ", wbtcValue);
+    console.log("total supply: ", totalSupply);
+    console.log("Times mint called: ", handler.timesMintIsCalled());
+
     assert(wethValue + wbtcValue >= totalSupply);
+  }
+
+  function invariant_gettersShouldNotRevert() public view {
+    // All the getter functions goes here.
+    dsce.getLiquidationBonus();
+    dsce.getPrecision();
   }
 }

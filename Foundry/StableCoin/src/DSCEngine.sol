@@ -277,7 +277,7 @@ contract DSCEngine is ReentrancyGuard {
         pure
         returns (uint256)
     {
-        if (totalDscMinted == 0) return type(uint256).max;
+        if (totalDscMinted == 0) return type(uint256).max; // To mitigate the issue when collateral is deposited and no corresponding mint is done.
         uint256 collateralAdjustedForThreshold = (collateralValueInUsd * LIQUIDATION_THRESHOLD) / LIQUIDATION_PRECISION;
         return (collateralAdjustedForThreshold * PRECISION) / totalDscMinted;
     }

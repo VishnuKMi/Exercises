@@ -1,0 +1,83 @@
+.mealList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .meal {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    margin: 1rem;
+  }
+  
+  .meal header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f8f8;
+  }
+  
+  .meal .image {
+    width: 80px;
+    height: 80px;
+    margin-right: 1rem;
+    position: relative;
+  }
+  
+  .meal .headerText {
+    flex: 1;
+  }
+  
+  .meal .headerText h2 {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+  .meal .headerText p {
+    margin: 0.5rem 0 0;
+    color: #666;
+  }
+  
+  .meal .content {
+    padding: 1rem;
+  }
+  
+  .meal .summary {
+    margin: 0 0 1rem;
+    color: #333;
+  }
+  
+  .meal .actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .meal .actions a,
+  .meal .actions button {
+    background-color: #0070f3;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .meal .actions button {
+    background-color: #e00;
+  }
+  
+  .meal .actions a:hover,
+  .meal .actions button:hover {
+    background-color: #005bb5;
+  }
+  
+  .meal .actions button:hover {
+    background-color: #c00;
+  }

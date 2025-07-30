@@ -8,7 +8,8 @@ const schema = require('./schema/schema');
 const app = express();
 
 // Replace with your Mongo Atlas URI
-const MONGO_URI = 'mongodb+srv://vsnu:vsnu123@projects.dz42oyd.mongodb.net/lyrical?retryWrites=true&w=majority&appName=PROJECTS';
+// const MONGO_URI = 'mongodb+srv://vsnu:vsnu123@projects.dz42oyd.mongodb.net/lyrical?retryWrites=true&w=majority&appName=PROJECTS';
+const MONGO_URI = 'mongodb+srv://vsnu:vsnu@test.uktqddf.mongodb.net/';
 if (!MONGO_URI) {
   throw new Error('You must provide a Mongo Atlas URI');
 }
@@ -32,7 +33,10 @@ app.use(
 
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
+
 const webpackConfig = require('../webpack.config.js');
-app.use(webpackMiddleware(webpack(webpackConfig)));
+const compiler = webpack(webpackConfig);
+app.use(webpackMiddleware(compiler));
+
 
 module.exports = app;

@@ -43,3 +43,7 @@
 [submodule "Foundry/DAO/lib/openzeppelin-contracts"]
 	path = Foundry/DAO/lib/openzeppelin-contracts
 	url = https://github.com/openzeppelin/openzeppelin-contracts
+
+[submodule "Audit/TestUniV2/lib/forge-std"]
+	path = Audit/TestUniV2/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

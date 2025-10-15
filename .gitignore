@@ -1,2 +1,10 @@
 # Ignore all node_modules folders everywhere in the repo
 **/node_modules/
+
+# Ignore all forge libs
+**/lib/forge-std/
+**/lib/openzeppelin-contracts/
+**/lib/openzeppelin-contracts-upgradeable/
+**/lib/solmate/
+**/lib/chainlink-brownie-contracts/
+**/lib/foundry-devops/
